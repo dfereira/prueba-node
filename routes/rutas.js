@@ -1,35 +1,13 @@
-app.post('/sumar',function(request,response){
-    var a = parseInt(request.body.a);
-    var b = parseInt(request.body.b);
+var usuariosControlador = require("../controladores/usuariosControlador.js").usuariosControlador
 
-    var c = a + b;
-
-    response.send("El resultado es: " + c);
+app.get('/listar', function(request, response){
+    usuariosControlador.listar(request, response);
 })
 
-app.post('/restar',function(request,response){
-    var a = parseInt(request.body.a);
-    var b = parseInt(request.body.b);
-
-    var c = a - b;
-
-    response.send("El resultado es: " + c);
+app.get('/borrar/:index', function(request, response){
+    usuariosControlador.borrar(request, response);
 })
 
-app.post('/multiplicar',function(request,response){
-    var a = parseInt(request.body.a);
-    var b = parseInt(request.body.b);
-
-    var c = a * b;
-
-    response.send("El resultado es: " + c);
-})
-
-app.post('/dividir',function(request,response){
-    var a = parseInt(request.body.a);
-    var b = parseInt(request.body.b);
-
-    var c = a / b;
-
-    response.send("El resultado es: " + c);
-})
+app.post('/crear', function(request, response){
+    usuariosControlador.crear(request, response);
+});
